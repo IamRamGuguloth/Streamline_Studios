@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import Image from "next/image";
 import { FadeIn, SectionLabel, ImagePlaceholder, ProjectMeta, LargeText } from "@/components/ui";
 
 export const metadata: Metadata = {
@@ -41,9 +42,10 @@ export default function ThothaPage() {
         {/* Hero Image — full width editorial crop */}
         <FadeIn delay={0.15}>
           <div className="mb-8">
-            <ImagePlaceholder
+            <Image
+              src="/images/Inside_Vehicle.png"
+              alt="Thotha — In-car environment, dashboard context shot"
               aspectRatio="aspect-[21/9]"
-              label="Thotha — In-car environment, dashboard context shot"
               className="rounded-xl"
             />
           </div>
