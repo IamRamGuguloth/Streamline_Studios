@@ -49,7 +49,6 @@ export default function ThothaPage() {
                 alt="Thotha — In-car environment, dashboard context shot"
                 fill
                 className="object-cover"
-                priority
               />
             </div>
           </div>
