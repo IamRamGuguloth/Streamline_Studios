@@ -21,6 +21,7 @@ const projects = [
     description:
       "A car air purifier with AQI monitoring. A physical bird communicates air quality through movement and light — turning atmospheric data into something instinctively understood.",
     imageAspect: "aspect-[16/9]",
+    image: "", // e.g. "/images/thotha-index.jpg"
   },
   {
     id: "kage",
@@ -34,6 +35,7 @@ const projects = [
     description:
       "A wall shelf cut and folded from a single sheet of metal. The manufacturing process is the design method — every decision traced back to the material and the machine.",
     imageAspect: "aspect-[4/3]",
+    image: "", // e.g. "/images/kage-index.jpg"
   },
   {
     id: "noty",
@@ -47,6 +49,7 @@ const projects = [
     description:
       "A reusable note-taking system designed to eliminate paper waste. NOTY questions the assumption that everyday notes are inherently disposable.",
     imageAspect: "aspect-[16/10]",
+    image: "", // e.g. "/images/noty-index.jpg"
   },
 ];
 
@@ -79,6 +82,8 @@ export default function WorkPage() {
                       <ImagePlaceholder
                         aspectRatio={project.imageAspect}
                         label={project.title}
+                        src={project.image || undefined}
+                        alt={project.title}
                       />
                     </div>
                   </div>

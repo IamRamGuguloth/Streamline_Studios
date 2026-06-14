@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import clsx from "clsx";
 import React from "react";
 
@@ -64,6 +65,16 @@ interface ImagePlaceholderProps {
   label?: string;
   className?: string;
   dark?: boolean;
+  /**
+   * Path to a real image (e.g. "/images/thotha-hero.jpg").
+   * Once provided, this renders the actual image instead of the
+   * placeholder block — same size, aspect ratio, and rounded corners.
+   */
+  src?: string;
+  /** Required once `src` is set — describe what the image shows. */
+  alt?: string;
+  /** Image priority loading (use sparingly — typically only the hero). */
+  priority?: boolean;
 }
 
 export function ImagePlaceholder({
@@ -71,7 +82,31 @@ export function ImagePlaceholder({
   label,
   className,
   dark = false,
+  src,
+  alt,
+  priority = false,
 }: ImagePlaceholderProps) {
+  if (src) {
+    return (
+      <div
+        className={clsx(
+          "w-full rounded-xl overflow-hidden relative",
+          aspectRatio,
+          className
+        )}
+      >
+        <Image
+          src={src}
+          alt={alt ?? label ?? ""}
+          fill
+          priority={priority}
+          sizes="(max-width: 768px) 100vw, 1440px"
+          className="object-cover"
+        />
+      </div>
+    );
+  }
+
   return (
     <div
       className={clsx(

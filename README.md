@@ -63,6 +63,8 @@ That's it. The workflow at `.github/workflows/deploy.yml` will:
 - add a `.nojekyll` file so GitHub doesn't mangle the `_next/` asset folder
 - publish `out/` to GitHub Pages
 
+> **Optional:** this repo doesn't ship a `package-lock.json`, so the workflow uses `npm install`. If you run `npm install` locally once and commit the generated `package-lock.json`, you can switch the workflow to `npm ci` and add `cache: npm` to the setup-node step for faster, more reproducible builds — but it works fine without this.
+
 Your site will be live at:
 - `https://<your-username>.github.io/<repo-name>/` — if the repo is named anything other than `<your-username>.github.io`
 - `https://<your-username>.github.io/` — if the repo is named exactly `<your-username>.github.io`

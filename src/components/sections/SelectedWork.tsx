@@ -16,6 +16,7 @@ const projects = [
     description:
       "Air quality is invisible. Most people cannot interpret AQI data in any meaningful way. Thotha translates atmospheric complexity into something instinctively readable — a small bird whose behavior reflects the air around it.",
     imageAspect: "aspect-[16/10]",
+    image: "", // e.g. "/images/thotha-selected.jpg"
     dark: false,
   },
   {
@@ -29,6 +30,7 @@ const projects = [
     description:
       "A wall shelf cut and folded from a single sheet of metal. No joints. No fasteners. The geometry is the structure — a study in what sheet metal can be when manufacturing constraints become design decisions.",
     imageAspect: "aspect-[16/9]",
+    image: "", // e.g. "/images/kage-selected.jpg"
     dark: false,
   },
   {
@@ -42,6 +44,7 @@ const projects = [
     description:
       "Every year, billions of adhesive notes are used once and thrown away. NOTY is a reusable note-taking system that challenges the assumption that temporary notes must be disposable.",
     imageAspect: "aspect-[4/3]",
+    image: "", // e.g. "/images/noty-selected.jpg"
     dark: false,
   },
 ];
@@ -96,6 +99,8 @@ function ProjectEntry({
               <ImagePlaceholder
                 aspectRatio={project.imageAspect}
                 label={`${project.title} — ${project.discipline.split(" · ")[0]}`}
+                src={project.image || undefined}
+                alt={`${project.title} — ${project.discipline}`}
                 dark={project.dark}
                 className="rounded-xl"
               />

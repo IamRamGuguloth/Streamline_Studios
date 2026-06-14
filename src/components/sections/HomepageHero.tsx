@@ -2,14 +2,30 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { ImagePlaceholder } from "@/components/ui";
+import Image from "next/image";
+
+// To use real images here, drop files into /public/images/ and set
+// these two paths. Leave as `null` to keep the placeholder color blocks.
+const HERO_BACKGROUND_SRC: string | null = null; // e.g. "/images/hero-background.jpg"
+const HERO_CORNER_SRC: string | null = null; // e.g. "/images/thotha-context.jpg"
 
 export function HomepageHero() {
   return (
     <section className="relative min-h-screen flex flex-col justify-end pb-20 md:pb-32 pt-32 overflow-hidden">
       {/* Background Hero Image — editorial crop */}
       <div className="absolute inset-0 z-0">
-        <div className="w-full h-full bg-[#E2E0DC]" />
+        {HERO_BACKGROUND_SRC ? (
+          <Image
+            src={HERO_BACKGROUND_SRC}
+            alt="Streamline Studios — hero"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-[#E2E0DC]" />
+        )}
         {/* Overlay for text legibility at bottom */}
         <div className="absolute bottom-0 left-0 right-0 h-2/3 bg-gradient-to-t from-background/80 to-transparent" />
       </div>
@@ -21,12 +37,25 @@ export function HomepageHero() {
         transition={{ duration: 1.4, ease: [0.21, 0.47, 0.32, 0.98] }}
         className="absolute top-0 right-0 w-[55%] md:w-[48%] h-[75%] z-0"
       >
-        <div className="w-full h-full bg-[#CFCDC8]" />
-        <div className="absolute bottom-8 left-8">
-          <p className="text-xs text-[#AAA8A0] uppercase tracking-widest">
-            Thotha — Air Quality Monitor
-          </p>
-        </div>
+        {HERO_CORNER_SRC ? (
+          <Image
+            src={HERO_CORNER_SRC}
+            alt="Thotha — Air Quality Monitor"
+            fill
+            priority
+            sizes="(max-width: 768px) 55vw, 48vw"
+            className="object-cover"
+          />
+        ) : (
+          <>
+            <div className="w-full h-full bg-[#CFCDC8]" />
+            <div className="absolute bottom-8 left-8">
+              <p className="text-xs text-[#AAA8A0] uppercase tracking-widest">
+                Thotha — Air Quality Monitor
+              </p>
+            </div>
+          </>
+        )}
       </motion.div>
 
       {/* Content */}
