@@ -40,16 +40,22 @@ export default function ThothaPage() {
         </FadeIn>
 
         {/* Hero Image — full width editorial crop */}
+        {/* Hero Image — full width editorial crop */}
         <FadeIn delay={0.15}>
           <div className="mb-8">
-            <Image
-              src="/images/Inside_Vehicle.png"
-              alt="Thotha — In-car environment, dashboard context shot"
-              aspectRatio="aspect-[21/9]"
-              className="rounded-xl"
-            />
+            <div className="relative aspect-[21/9] overflow-hidden rounded-xl">
+              <Image
+                src="/images/Inside_Vehicle.png"
+                alt="Thotha — In-car environment, dashboard context shot"
+                fill
+                className="object-cover"
+                priority
+              />
+            </div>
           </div>
-          <p className="text-xs text-secondary">Thotha mounted in natural driving environment.</p>
+          <p className="text-xs text-secondary">
+            Thotha mounted in natural driving environment.
+          </p>
         </FadeIn>
 
         {/* Meta */}
